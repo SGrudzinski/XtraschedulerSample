@@ -51,6 +51,8 @@ Partial Class Form1
 		  Me.schedulerSplitContainerControl = New DevExpress.XtraEditors.SplitContainerControl()
 		  Me.schedulerControl = New DevExpress.XtraScheduler.SchedulerControl()
 		  Me.schedulerStorage = New DevExpress.XtraScheduler.SchedulerDataStorage(Me.components)
+		  Me.AppointmentBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+		  Me.ResourceBindingSource = New System.Windows.Forms.BindingSource(Me.components)
 		  Me.dateNavigator = New DevExpress.XtraScheduler.DateNavigator()
 		  Me.ribbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
 		  Me.appMenu = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
@@ -141,6 +143,8 @@ Partial Class Form1
 		  Me.schedulerSplitContainerControl.SuspendLayout()
 		  CType(Me.schedulerControl, System.ComponentModel.ISupportInitialize).BeginInit()
 		  CType(Me.schedulerStorage, System.ComponentModel.ISupportInitialize).BeginInit()
+		  CType(Me.AppointmentBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+		  CType(Me.ResourceBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
 		  CType(Me.dateNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
 		  CType(Me.dateNavigator.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
 		  CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -279,6 +283,7 @@ Partial Class Form1
 		  Me.schedulerControl.DataStorage = Me.schedulerStorage
 		  Me.schedulerControl.Dock = System.Windows.Forms.DockStyle.Fill
 		  Me.schedulerControl.Location = New System.Drawing.Point(0, 0)
+		  Me.schedulerControl.MenuManager = Me.ribbonControl
 		  Me.schedulerControl.Name = "schedulerControl"
 		  Me.schedulerControl.Size = New System.Drawing.Size(686, 518)
 		  Me.schedulerControl.Start = New Date(2018, 9, 3, 0, 0, 0, 0)
@@ -287,8 +292,40 @@ Partial Class Form1
 		  Me.schedulerControl.Views.DayView.TimeRulers.Add(TimeRuler1)
 		  Me.schedulerControl.Views.FullWeekView.Enabled = True
 		  Me.schedulerControl.Views.FullWeekView.TimeRulers.Add(TimeRuler2)
-		  Me.schedulerControl.Views.WeekView.Enabled = False
 		  Me.schedulerControl.Views.WorkWeekView.TimeRulers.Add(TimeRuler3)
+		  '
+		  'schedulerStorage
+		  '
+		  Me.schedulerStorage.Appointments.CustomFieldMappings.Add(New DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Department", "Department"))
+		  Me.schedulerStorage.Appointments.DataSource = Me.AppointmentBindingSource
+		  Me.schedulerStorage.Appointments.Mappings.AllDay = "AllDay"
+		  Me.schedulerStorage.Appointments.Mappings.Description = "Description"
+		  Me.schedulerStorage.Appointments.Mappings.End = "EndDate"
+		  Me.schedulerStorage.Appointments.Mappings.Label = "Label"
+		  Me.schedulerStorage.Appointments.Mappings.Location = "Location"
+		  Me.schedulerStorage.Appointments.Mappings.RecurrenceInfo = "RecurrenceInfo"
+		  Me.schedulerStorage.Appointments.Mappings.ReminderInfo = "ReminderInfo"
+		  Me.schedulerStorage.Appointments.Mappings.ResourceId = "ResourceID"
+		  Me.schedulerStorage.Appointments.Mappings.Start = "StartDate"
+		  Me.schedulerStorage.Appointments.Mappings.Status = "Status"
+		  Me.schedulerStorage.Appointments.Mappings.Subject = "Subject"
+		  Me.schedulerStorage.Appointments.Mappings.TimeZoneId = "TimeZoneId"
+		  Me.schedulerStorage.Appointments.Mappings.Type = "Type"
+		  Me.schedulerStorage.Resources.CustomFieldMappings.Add(New DevExpress.XtraScheduler.ResourceCustomFieldMapping("CustomField1", "CustomField1"))
+		  Me.schedulerStorage.Resources.DataSource = Me.ResourceBindingSource
+		  Me.schedulerStorage.Resources.Mappings.Caption = "ResourceName"
+		  Me.schedulerStorage.Resources.Mappings.Color = "Color"
+		  Me.schedulerStorage.Resources.Mappings.Id = "ResourceID"
+		  Me.schedulerStorage.Resources.Mappings.Image = "Image"
+		  Me.schedulerStorage.Resources.Mappings.ParentId = "UniqueID"
+		  '
+		  'AppointmentBindingSource
+		  '
+		  Me.AppointmentBindingSource.DataSource = GetType(CustomFieldSample.EFAppointment)
+		  '
+		  'ResourceBindingSource
+		  '
+		  Me.ResourceBindingSource.DataSource = GetType(CustomFieldSample.EFResource)
 		  '
 		  'dateNavigator
 		  '
@@ -929,6 +966,8 @@ Partial Class Form1
 		  Me.schedulerSplitContainerControl.ResumeLayout(False)
 		  CType(Me.schedulerControl, System.ComponentModel.ISupportInitialize).EndInit()
 		  CType(Me.schedulerStorage, System.ComponentModel.ISupportInitialize).EndInit()
+		  CType(Me.AppointmentBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+		  CType(Me.ResourceBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
 		  CType(Me.dateNavigator.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
 		  CType(Me.dateNavigator, System.ComponentModel.ISupportInitialize).EndInit()
 		  CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1044,4 +1083,6 @@ Partial Class Form1
 	 Friend WithEvents LayoutRibbonPageGroup1 As UI.LayoutRibbonPageGroup
 	 Friend WithEvents SchedulerBarController1 As UI.SchedulerBarController
 	 Private WithEvents RibbonPageSkins As RibbonPage
+	 Friend WithEvents AppointmentBindingSource As BindingSource
+	 Friend WithEvents ResourceBindingSource As BindingSource
 End Class
