@@ -107,6 +107,7 @@
   <ItemGroup>
     <Compile Include="EFAppointment.vb" />
     <Compile Include="CalendarDB.vb" />
+    <Compile Include="CustomAppointmentController.vb" />
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
     </Compile>

@@ -86,7 +86,7 @@ Partial Public Class OutlookAppointmentForm
 				m_menuManager = value
 		  End Set
 	 End Property
-	 Protected Friend ReadOnly Property Controller() As AppointmentFormController
+	 Protected Friend ReadOnly Property Controller() As CustomAppointmentController
 		  Get
 				Return m_controller
 		  End Get
@@ -139,9 +139,13 @@ Partial Public Class OutlookAppointmentForm
 		  End Get
 	 End Property
 #End Region
-
+	 Private loaded As Boolean
 	 Public Overridable Sub LoadFormData(ByVal appointment As Appointment)
-		  'do nothing
+
+		  If Me.cboDepartment IsNot Nothing Then
+				Me.cboDepartment.EditValue = Controller.Department
+		  End If
+		  loaded = True
 	 End Sub
 	 Public Overridable Function SaveFormData(ByVal appointment As Appointment) As Boolean
 		  Return True
@@ -216,6 +220,7 @@ Partial Public Class OutlookAppointmentForm
 
 		  BindBoolToVisibility(Me.btnTimeZones, "Visibility", "TimeZonesEnabled")
 		  BindProperties(Me.btnTimeZones, "Down", "TimeZoneVisible")
+		  BindProperties(Me.cboDepartment, "EditValue", "Department")
 	 End Sub
 
 	 Protected Overridable Sub BindControllerToIcon()
@@ -290,7 +295,7 @@ Partial Public Class OutlookAppointmentForm
 		  LoadFormData(Controller.EditedAppointmentCopy)
 	 End Sub
 	 Protected Overridable Function CreateController(ByVal control As SchedulerControl, ByVal apt As Appointment) As AppointmentFormController
-		  Return New AppointmentFormController(control, apt)
+		  Return New CustomAppointmentController(control, apt)
 	 End Function
 	 Protected Friend Overridable Sub LoadIcons()
 		  Dim asm As System.Reflection.Assembly = GetType(SchedulerControl).Assembly
@@ -604,5 +609,11 @@ Partial Public Class OutlookAppointmentForm
 				End If
 		  End If
 		  MyBase.Dispose(disposing)
+	 End Sub
+
+	 Private Sub cboDepartment_EditValueChanged(sender As Object, e As EventArgs) Handles cboDepartment.EditValueChanged
+		  If loaded Then
+				Controller.Department = cboDepartment.EditValue
+		  End If
 	 End Sub
 End Class

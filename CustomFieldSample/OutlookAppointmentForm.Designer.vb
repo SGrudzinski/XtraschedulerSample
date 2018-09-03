@@ -8,10 +8,11 @@ Partial Class OutlookAppointmentForm
 	 ''' </summary>
 	 Private Sub InitializeComponent()
 		  Me.components = New System.ComponentModel.Container()
-		  Dim resources As New System.ComponentModel.ComponentResourceManager(GetType(OutlookAppointmentForm))
+		  Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OutlookAppointmentForm))
 		  Me.ribbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
 		  Me.backstageViewControl1 = New DevExpress.XtraBars.Ribbon.BackstageViewControl()
 		  Me.bvPrint = New DevExpress.XtraBars.Ribbon.BackstageViewClientControl()
+		  Me.appointmentBackstageControl = New DevExpress.XtraScheduler.Design.AppointmentBackstageControl()
 		  Me.bvtPrint = New DevExpress.XtraBars.Ribbon.BackstageViewTabItem()
 		  Me.bvbSave = New DevExpress.XtraBars.Ribbon.BackstageViewButtonItem()
 		  Me.bvbSaveAs = New DevExpress.XtraBars.Ribbon.BackstageViewButtonItem()
@@ -58,7 +59,8 @@ Partial Class OutlookAppointmentForm
 		  Me.panelDescription = New System.Windows.Forms.Panel()
 		  Me.panel2 = New System.Windows.Forms.Panel()
 		  Me.panel3 = New System.Windows.Forms.Panel()
-		  Me.appointmentBackstageControl = New DevExpress.XtraScheduler.Design.AppointmentBackstageControl()
+		  Me.lblDepartment = New DevExpress.XtraEditors.LabelControl()
+		  Me.cboDepartment = New DevExpress.XtraEditors.ComboBoxEdit()
 		  CType(Me.ribbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
 		  CType(Me.backstageViewControl1, System.ComponentModel.ISupportInitialize).BeginInit()
 		  Me.backstageViewControl1.SuspendLayout()
@@ -88,10 +90,11 @@ Partial Class OutlookAppointmentForm
 		  CType(Me.tbDescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
 		  Me.panel2.SuspendLayout()
 		  Me.panel3.SuspendLayout()
+		  CType(Me.cboDepartment.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
 		  Me.SuspendLayout()
-		  ' 
-		  ' ribbonControl1
-		  ' 
+		  '
+		  'ribbonControl1
+		  '
 		  Me.ribbonControl1.ApplicationButtonDropDownControl = Me.backstageViewControl1
 		  Me.ribbonControl1.AutoSizeItems = True
 		  Me.ribbonControl1.ExpandCollapseItem.Id = 0
@@ -106,10 +109,9 @@ Partial Class OutlookAppointmentForm
 		  Me.ribbonControl1.QuickToolbarItemLinks.Add(Me.btnDelete)
 		  Me.ribbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.riAppointmentLabel, Me.riAppointmentResource, Me.riAppointmentStatus, Me.riDuration})
 		  Me.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013
-		  '			Me.ribbonControl1.ApplicationButtonClick += New System.EventHandler(Me.ribbonControl1_ApplicationButtonClick);
-		  ' 
-		  ' backstageViewControl1
-		  ' 
+		  '
+		  'backstageViewControl1
+		  '
 		  resources.ApplyResources(Me.backstageViewControl1, "backstageViewControl1")
 		  Me.backstageViewControl1.Controls.Add(Me.bvPrint)
 		  Me.backstageViewControl1.Items.Add(Me.bvtPrint)
@@ -117,181 +119,176 @@ Partial Class OutlookAppointmentForm
 		  Me.backstageViewControl1.Items.Add(Me.bvbSaveAs)
 		  Me.backstageViewControl1.Items.Add(Me.bvbClose)
 		  Me.backstageViewControl1.Name = "backstageViewControl1"
+		  Me.backstageViewControl1.Office2013StyleOptions.HeaderBackColor = System.Drawing.SystemColors.Control
 		  Me.backstageViewControl1.OwnerControl = Me.ribbonControl1
 		  Me.backstageViewControl1.SelectedTab = Me.bvtPrint
 		  Me.backstageViewControl1.SelectedTabIndex = 0
 		  Me.backstageViewControl1.Style = DevExpress.XtraBars.Ribbon.BackstageViewStyle.Office2013
-		  Me.backstageViewControl1.Office2013StyleOptions.HeaderBackColor = System.Drawing.SystemColors.Control
-		  ' 
-		  ' bvPrint
-		  ' 
+		  '
+		  'bvPrint
+		  '
 		  resources.ApplyResources(Me.bvPrint, "bvPrint")
 		  Me.bvPrint.Controls.Add(Me.appointmentBackstageControl)
 		  Me.bvPrint.Name = "bvPrint"
-		  ' 
-		  ' bvtPrint
-		  ' 
+		  '
+		  'appointmentBackstageControl
+		  '
+		  resources.ApplyResources(Me.appointmentBackstageControl, "appointmentBackstageControl")
+		  Me.appointmentBackstageControl.Name = "appointmentBackstageControl"
+		  '
+		  'bvtPrint
+		  '
 		  resources.ApplyResources(Me.bvtPrint, "bvtPrint")
 		  Me.bvtPrint.ContentControl = Me.bvPrint
 		  Me.bvtPrint.Name = "bvtPrint"
 		  Me.bvtPrint.Selected = True
-		  ' 
-		  ' bvbSave
-		  ' 
+		  '
+		  'bvbSave
+		  '
 		  resources.ApplyResources(Me.bvbSave, "bvbSave")
 		  Me.bvbSave.Name = "bvbSave"
-		  'Me.bvbSave.ItemClick += New DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(Me.bvbSave_ItemClick);
-		  ' 
-		  ' bvbSaveAs
-		  ' 
+		  '
+		  'bvbSaveAs
+		  '
 		  resources.ApplyResources(Me.bvbSaveAs, "bvbSaveAs")
 		  Me.bvbSaveAs.Name = "bvbSaveAs"
-		  'Me.bvbSaveAs.ItemClick += New DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(Me.bvbSaveAs_ItemClick);
-		  ' 
-		  ' bvbClose
-		  ' 
+		  '
+		  'bvbClose
+		  '
 		  resources.ApplyResources(Me.bvbClose, "bvbClose")
 		  Me.bvbClose.Name = "bvbClose"
-		  'Me.bvbClose.ItemClick += New DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(Me.bvbClose_ItemClick);
-		  ' 
-		  ' btnSaveAndClose
-		  ' 
+		  '
+		  'btnSaveAndClose
+		  '
 		  resources.ApplyResources(Me.btnSaveAndClose, "btnSaveAndClose")
 		  Me.btnSaveAndClose.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.btnSaveAndClose.Id = 3
-		  Me.btnSaveAndClose.ImageOptions.Image = (CType(resources.GetObject("btnSaveAndClose.ImageOptions.Image"), System.Drawing.Image))
-		  Me.btnSaveAndClose.ImageOptions.LargeImage = (CType(resources.GetObject("btnSaveAndClose.ImageOptions.LargeImage"), System.Drawing.Image))
-		  Me.btnSaveAndClose.ImageOptions.SvgImage = (CType(resources.GetObject("btnSaveAndClose.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage))
+		  Me.btnSaveAndClose.ImageOptions.Image = CType(resources.GetObject("btnSaveAndClose.ImageOptions.Image"), System.Drawing.Image)
+		  Me.btnSaveAndClose.ImageOptions.LargeImage = CType(resources.GetObject("btnSaveAndClose.ImageOptions.LargeImage"), System.Drawing.Image)
+		  Me.btnSaveAndClose.ImageOptions.SvgImage = CType(resources.GetObject("btnSaveAndClose.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		  Me.btnSaveAndClose.Name = "btnSaveAndClose"
-		  'Me.btnSaveAndClose.ItemClick += New DevExpress.XtraBars.ItemClickEventHandler(Me.btnSaveAndClose_ItemClick);
-		  ' 
-		  ' btnDelete
-		  ' 
+		  '
+		  'btnDelete
+		  '
 		  resources.ApplyResources(Me.btnDelete, "btnDelete")
 		  Me.btnDelete.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.btnDelete.Id = 4
-		  Me.btnDelete.ImageOptions.Image = (CType(resources.GetObject("btnDelete.ImageOptions.Image"), System.Drawing.Image))
-		  Me.btnDelete.ImageOptions.LargeImage = (CType(resources.GetObject("btnDelete.ImageOptions.LargeImage"), System.Drawing.Image))
-		  Me.btnDelete.ImageOptions.SvgImage = (CType(resources.GetObject("btnDelete.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage))
+		  Me.btnDelete.ImageOptions.Image = CType(resources.GetObject("btnDelete.ImageOptions.Image"), System.Drawing.Image)
+		  Me.btnDelete.ImageOptions.LargeImage = CType(resources.GetObject("btnDelete.ImageOptions.LargeImage"), System.Drawing.Image)
+		  Me.btnDelete.ImageOptions.SvgImage = CType(resources.GetObject("btnDelete.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		  Me.btnDelete.Name = "btnDelete"
-		  'Me.btnDelete.ItemClick += New DevExpress.XtraBars.ItemClickEventHandler(Me.barButtonDelete_ItemClick);
-		  ' 
-		  ' barLabel
-		  ' 
+		  '
+		  'barLabel
+		  '
 		  resources.ApplyResources(Me.barLabel, "barLabel")
 		  Me.barLabel.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.barLabel.Edit = Me.riAppointmentLabel
 		  Me.barLabel.Id = 8
 		  Me.barLabel.Name = "barLabel"
-		  ' 
-		  ' riAppointmentLabel
-		  ' 
+		  '
+		  'riAppointmentLabel
+		  '
 		  resources.ApplyResources(Me.riAppointmentLabel, "riAppointmentLabel")
-		  Me.riAppointmentLabel.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("riAppointmentLabel.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
+		  Me.riAppointmentLabel.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("riAppointmentLabel.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
 		  Me.riAppointmentLabel.Name = "riAppointmentLabel"
-		  ' 
-		  ' barStatus
-		  ' 
+		  '
+		  'barStatus
+		  '
 		  resources.ApplyResources(Me.barStatus, "barStatus")
 		  Me.barStatus.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.barStatus.Edit = Me.riAppointmentStatus
 		  Me.barStatus.Id = 11
 		  Me.barStatus.Name = "barStatus"
-		  ' 
-		  ' riAppointmentStatus
-		  ' 
+		  '
+		  'riAppointmentStatus
+		  '
 		  resources.ApplyResources(Me.riAppointmentStatus, "riAppointmentStatus")
-		  Me.riAppointmentStatus.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("riAppointmentStatus.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
+		  Me.riAppointmentStatus.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("riAppointmentStatus.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
 		  Me.riAppointmentStatus.Name = "riAppointmentStatus"
-		  ' 
-		  ' barReminder
-		  ' 
+		  '
+		  'barReminder
+		  '
 		  resources.ApplyResources(Me.barReminder, "barReminder")
 		  Me.barReminder.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.barReminder.Edit = Me.riDuration
 		  Me.barReminder.Id = 12
 		  Me.barReminder.Name = "barReminder"
-		  ' 
-		  ' riDuration
-		  ' 
+		  '
+		  'riDuration
+		  '
 		  resources.ApplyResources(Me.riDuration, "riDuration")
-		  Me.riDuration.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("riDuration.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
+		  Me.riDuration.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("riDuration.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
 		  Me.riDuration.DisabledStateText = Nothing
 		  Me.riDuration.Name = "riDuration"
 		  Me.riDuration.ShowEmptyItem = True
-		  ' 
-		  ' btnRecurrence
-		  ' 
+		  '
+		  'btnRecurrence
+		  '
 		  Me.btnRecurrence.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
 		  resources.ApplyResources(Me.btnRecurrence, "btnRecurrence")
 		  Me.btnRecurrence.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.btnRecurrence.Id = 17
-		  Me.btnRecurrence.ImageOptions.Image = (CType(resources.GetObject("btnRecurrence.ImageOptions.Image"), System.Drawing.Image))
-		  Me.btnRecurrence.ImageOptions.LargeImage = (CType(resources.GetObject("btnRecurrence.ImageOptions.LargeImage"), System.Drawing.Image))
-		  Me.btnRecurrence.ImageOptions.SvgImage = (CType(resources.GetObject("btnRecurrence.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage))
+		  Me.btnRecurrence.ImageOptions.Image = CType(resources.GetObject("btnRecurrence.ImageOptions.Image"), System.Drawing.Image)
+		  Me.btnRecurrence.ImageOptions.LargeImage = CType(resources.GetObject("btnRecurrence.ImageOptions.LargeImage"), System.Drawing.Image)
+		  Me.btnRecurrence.ImageOptions.SvgImage = CType(resources.GetObject("btnRecurrence.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		  Me.btnRecurrence.Name = "btnRecurrence"
-		  'Me.btnRecurrence.ItemClick += New DevExpress.XtraBars.ItemClickEventHandler(Me.barRecurrence_ItemClick);
-		  ' 
-		  ' btnSave
-		  ' 
+		  '
+		  'btnSave
+		  '
 		  resources.ApplyResources(Me.btnSave, "btnSave")
 		  Me.btnSave.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.btnSave.Id = 1
-		  Me.btnSave.ImageOptions.Image = (CType(resources.GetObject("btnSave.ImageOptions.Image"), System.Drawing.Image))
-		  Me.btnSave.ImageOptions.SvgImage = (CType(resources.GetObject("btnSave.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage))
+		  Me.btnSave.ImageOptions.Image = CType(resources.GetObject("btnSave.ImageOptions.Image"), System.Drawing.Image)
+		  Me.btnSave.ImageOptions.SvgImage = CType(resources.GetObject("btnSave.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		  Me.btnSave.Name = "btnSave"
-		  '			Me.btnSave.ItemClick += New DevExpress.XtraBars.ItemClickEventHandler(Me.btnSave_ItemClick);
-		  ' 
-		  ' btnNext
-		  ' 
+		  '
+		  'btnNext
+		  '
 		  resources.ApplyResources(Me.btnNext, "btnNext")
 		  Me.btnNext.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.btnNext.Id = 3
-		  Me.btnNext.ImageOptions.Image = (CType(resources.GetObject("btnNext.ImageOptions.Image"), System.Drawing.Image))
-		  Me.btnNext.ImageOptions.LargeImage = (CType(resources.GetObject("btnNext.ImageOptions.LargeImage"), System.Drawing.Image))
-		  Me.btnNext.ImageOptions.SvgImage = (CType(resources.GetObject("btnNext.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage))
+		  Me.btnNext.ImageOptions.Image = CType(resources.GetObject("btnNext.ImageOptions.Image"), System.Drawing.Image)
+		  Me.btnNext.ImageOptions.LargeImage = CType(resources.GetObject("btnNext.ImageOptions.LargeImage"), System.Drawing.Image)
+		  Me.btnNext.ImageOptions.SvgImage = CType(resources.GetObject("btnNext.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		  Me.btnNext.Name = "btnNext"
-		  '			Me.btnNext.ItemClick += New DevExpress.XtraBars.ItemClickEventHandler(Me.btnNext_ItemClick);
-		  ' 
-		  ' btnPrevious
-		  ' 
+		  '
+		  'btnPrevious
+		  '
 		  resources.ApplyResources(Me.btnPrevious, "btnPrevious")
 		  Me.btnPrevious.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.btnPrevious.Id = 4
-		  Me.btnPrevious.ImageOptions.Image = (CType(resources.GetObject("btnPrevious.ImageOptions.Image"), System.Drawing.Image))
-		  Me.btnPrevious.ImageOptions.LargeImage = (CType(resources.GetObject("btnPrevious.ImageOptions.LargeImage"), System.Drawing.Image))
-		  Me.btnPrevious.ImageOptions.SvgImage = (CType(resources.GetObject("btnPrevious.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage))
+		  Me.btnPrevious.ImageOptions.Image = CType(resources.GetObject("btnPrevious.ImageOptions.Image"), System.Drawing.Image)
+		  Me.btnPrevious.ImageOptions.LargeImage = CType(resources.GetObject("btnPrevious.ImageOptions.LargeImage"), System.Drawing.Image)
+		  Me.btnPrevious.ImageOptions.SvgImage = CType(resources.GetObject("btnPrevious.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		  Me.btnPrevious.Name = "btnPrevious"
-		  '			Me.btnPrevious.ItemClick += New DevExpress.XtraBars.ItemClickEventHandler(Me.btnPrevious_ItemClick);
-		  ' 
-		  ' btnTimeZones
-		  ' 
+		  '
+		  'btnTimeZones
+		  '
 		  Me.btnTimeZones.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
 		  resources.ApplyResources(Me.btnTimeZones, "btnTimeZones")
 		  Me.btnTimeZones.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
 		  Me.btnTimeZones.Id = 1
-		  Me.btnTimeZones.ImageOptions.Image = (CType(resources.GetObject("btnTimeZones.ImageOptions.Image"), System.Drawing.Image))
-		  Me.btnTimeZones.ImageOptions.LargeImage = (CType(resources.GetObject("btnTimeZones.ImageOptions.LargeImage"), System.Drawing.Image))
-		  Me.btnTimeZones.ImageOptions.SvgImage = (CType(resources.GetObject("btnTimeZones.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage))
+		  Me.btnTimeZones.ImageOptions.Image = CType(resources.GetObject("btnTimeZones.ImageOptions.Image"), System.Drawing.Image)
+		  Me.btnTimeZones.ImageOptions.LargeImage = CType(resources.GetObject("btnTimeZones.ImageOptions.LargeImage"), System.Drawing.Image)
+		  Me.btnTimeZones.ImageOptions.SvgImage = CType(resources.GetObject("btnTimeZones.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
 		  Me.btnTimeZones.Name = "btnTimeZones"
-		  '			Me.btnTimeZones.ItemClick += New DevExpress.XtraBars.ItemClickEventHandler(Me.btnTimeZones_ItemClick);
-		  ' 
-		  ' rpAppointment
-		  ' 
+		  '
+		  'rpAppointment
+		  '
 		  Me.rpAppointment.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpgActions, Me.rpgOptions})
 		  Me.rpAppointment.Name = "rpAppointment"
 		  resources.ApplyResources(Me.rpAppointment, "rpAppointment")
-		  ' 
-		  ' rpgActions
-		  ' 
+		  '
+		  'rpgActions
+		  '
 		  Me.rpgActions.ItemLinks.Add(Me.btnSaveAndClose)
 		  Me.rpgActions.ItemLinks.Add(Me.btnDelete)
 		  Me.rpgActions.Name = "rpgActions"
 		  Me.rpgActions.ShowCaptionButton = False
 		  resources.ApplyResources(Me.rpgActions, "rpgActions")
-		  ' 
-		  ' rpgOptions
-		  ' 
+		  '
+		  'rpgOptions
+		  '
 		  Me.rpgOptions.AllowTextClipping = False
 		  Me.rpgOptions.ItemLinks.Add(Me.barLabel)
 		  Me.rpgOptions.ItemLinks.Add(Me.barStatus)
@@ -301,70 +298,70 @@ Partial Class OutlookAppointmentForm
 		  Me.rpgOptions.Name = "rpgOptions"
 		  Me.rpgOptions.ShowCaptionButton = False
 		  resources.ApplyResources(Me.rpgOptions, "rpgOptions")
-		  ' 
-		  ' riAppointmentResource
-		  ' 
+		  '
+		  'riAppointmentResource
+		  '
 		  resources.ApplyResources(Me.riAppointmentResource, "riAppointmentResource")
-		  Me.riAppointmentResource.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("riAppointmentResource.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
+		  Me.riAppointmentResource.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("riAppointmentResource.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
 		  Me.riAppointmentResource.Name = "riAppointmentResource"
-		  ' 
-		  ' lblStartTime
-		  ' 
+		  '
+		  'lblStartTime
+		  '
 		  resources.ApplyResources(Me.lblStartTime, "lblStartTime")
 		  Me.lblStartTime.Name = "lblStartTime"
-		  ' 
-		  ' edtStartDate
-		  ' 
+		  '
+		  'edtStartDate
+		  '
 		  resources.ApplyResources(Me.edtStartDate, "edtStartDate")
 		  Me.edtStartDate.Name = "edtStartDate"
 		  Me.edtStartDate.Properties.AccessibleName = resources.GetString("edtStartDate.Properties.AccessibleName")
-		  Me.edtStartDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("edtStartDate.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
+		  Me.edtStartDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("edtStartDate.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
 		  Me.edtStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-		  Me.edtStartDate.Properties.MaxValue = New System.DateTime(4000, 1, 1, 0, 0, 0, 0)
-		  ' 
-		  ' tbLocation
-		  ' 
+		  Me.edtStartDate.Properties.MaxValue = New Date(4000, 1, 1, 0, 0, 0, 0)
+		  '
+		  'tbLocation
+		  '
 		  resources.ApplyResources(Me.tbLocation, "tbLocation")
 		  Me.tbLocation.Name = "tbLocation"
 		  Me.tbLocation.Properties.AccessibleName = resources.GetString("tbLocation.Properties.AccessibleName")
-		  ' 
-		  ' edtStartTime
-		  ' 
+		  '
+		  'edtStartTime
+		  '
 		  resources.ApplyResources(Me.edtStartTime, "edtStartTime")
 		  Me.edtStartTime.Name = "edtStartTime"
 		  Me.edtStartTime.Properties.AccessibleName = resources.GetString("edtStartTime.Properties.AccessibleName")
 		  Me.edtStartTime.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
 		  Me.edtStartTime.Properties.Mask.EditMask = resources.GetString("edtStartTime.Properties.Mask.EditMask")
-		  ' 
-		  ' lblEndTime
-		  ' 
+		  '
+		  'lblEndTime
+		  '
 		  resources.ApplyResources(Me.lblEndTime, "lblEndTime")
 		  Me.lblEndTime.Name = "lblEndTime"
-		  ' 
-		  ' edtEndDate
-		  ' 
+		  '
+		  'edtEndDate
+		  '
 		  resources.ApplyResources(Me.edtEndDate, "edtEndDate")
 		  Me.edtEndDate.Name = "edtEndDate"
 		  Me.edtEndDate.Properties.AccessibleName = resources.GetString("edtEndDate.Properties.AccessibleName")
-		  Me.edtEndDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("edtEndDate.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
+		  Me.edtEndDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("edtEndDate.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
 		  Me.edtEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-		  Me.edtEndDate.Properties.MaxValue = New System.DateTime(4000, 1, 1, 0, 0, 0, 0)
-		  ' 
-		  ' edtEndTime
-		  ' 
+		  Me.edtEndDate.Properties.MaxValue = New Date(4000, 1, 1, 0, 0, 0, 0)
+		  '
+		  'edtEndTime
+		  '
 		  resources.ApplyResources(Me.edtEndTime, "edtEndTime")
 		  Me.edtEndTime.Name = "edtEndTime"
 		  Me.edtEndTime.Properties.AccessibleName = resources.GetString("edtEndTime.Properties.AccessibleName")
 		  Me.edtEndTime.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
 		  Me.edtEndTime.Properties.Mask.EditMask = resources.GetString("edtEndTime.Properties.Mask.EditMask")
-		  ' 
-		  ' lblLocation
-		  ' 
+		  '
+		  'lblLocation
+		  '
 		  resources.ApplyResources(Me.lblLocation, "lblLocation")
 		  Me.lblLocation.Name = "lblLocation"
-		  ' 
-		  ' panel1
-		  ' 
+		  '
+		  'panel1
+		  '
 		  resources.ApplyResources(Me.panel1, "panel1")
 		  Me.panel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
 		  Me.panel1.Controls.Add(Me.edtTimeZone)
@@ -373,64 +370,64 @@ Partial Class OutlookAppointmentForm
 		  Me.panel1.Controls.Add(Me.edtResources)
 		  Me.panel1.Controls.Add(Me.chkAllDay)
 		  Me.panel1.Name = "panel1"
-		  ' 
-		  ' edtTimeZone
-		  ' 
+		  '
+		  'edtTimeZone
+		  '
 		  resources.ApplyResources(Me.edtTimeZone, "edtTimeZone")
 		  Me.edtTimeZone.MenuManager = Me.ribbonControl1
 		  Me.edtTimeZone.Name = "edtTimeZone"
-		  Me.edtTimeZone.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("edtTimeZone.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
-		  ' 
-		  ' lblResource
-		  ' 
+		  Me.edtTimeZone.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("edtTimeZone.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+		  '
+		  'lblResource
+		  '
 		  resources.ApplyResources(Me.lblResource, "lblResource")
 		  Me.lblResource.Name = "lblResource"
-		  ' 
-		  ' edtResource
-		  ' 
+		  '
+		  'edtResource
+		  '
 		  resources.ApplyResources(Me.edtResource, "edtResource")
 		  Me.edtResource.Name = "edtResource"
 		  Me.edtResource.Properties.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox
-		  Me.edtResource.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("edtResource.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
-		  ' 
-		  ' edtResources
-		  ' 
+		  Me.edtResource.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("edtResource.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+		  '
+		  'edtResources
+		  '
 		  resources.ApplyResources(Me.edtResources, "edtResources")
 		  Me.edtResources.Name = "edtResources"
-		  Me.edtResources.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton((CType(resources.GetObject("edtResources.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines)))})
-		  ' 
-		  ' 
-		  ' 
-		  Me.edtResources.ResourcesCheckedListBoxControl.Location = (CType(resources.GetObject("edtResources.ResourcesCheckedListBoxControl.Location"), System.Drawing.Point))
+		  Me.edtResources.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("edtResources.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+		  '
+		  '
+		  '
+		  Me.edtResources.ResourcesCheckedListBoxControl.Location = CType(resources.GetObject("edtResources.ResourcesCheckedListBoxControl.Location"), System.Drawing.Point)
 		  Me.edtResources.ResourcesCheckedListBoxControl.Name = ""
-		  Me.edtResources.ResourcesCheckedListBoxControl.TabIndex = (CInt(Fix(resources.GetObject("edtResources.ResourcesCheckedListBoxControl.TabIndex"))))
-		  ' 
-		  ' chkAllDay
-		  ' 
+		  Me.edtResources.ResourcesCheckedListBoxControl.TabIndex = CType(resources.GetObject("edtResources.ResourcesCheckedListBoxControl.TabIndex"), Integer)
+		  '
+		  'chkAllDay
+		  '
 		  resources.ApplyResources(Me.chkAllDay, "chkAllDay")
 		  Me.chkAllDay.Name = "chkAllDay"
 		  Me.chkAllDay.Properties.AccessibleName = resources.GetString("chkAllDay.Properties.AccessibleName")
 		  Me.chkAllDay.Properties.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton
 		  Me.chkAllDay.Properties.AutoWidth = True
 		  Me.chkAllDay.Properties.Caption = resources.GetString("chkAllDay.Properties.Caption")
-		  ' 
-		  ' tbSubject
-		  ' 
+		  '
+		  'tbSubject
+		  '
 		  resources.ApplyResources(Me.tbSubject, "tbSubject")
 		  Me.tbSubject.Name = "tbSubject"
 		  Me.tbSubject.Properties.AccessibleName = resources.GetString("tbSubject.Properties.AccessibleName")
-		  ' 
-		  ' progressPanel
-		  ' 
+		  '
+		  'progressPanel
+		  '
 		  Me.progressPanel.Controls.Add(Me.tbProgress)
 		  Me.progressPanel.Controls.Add(Me.lblPercentCompleteValue)
 		  Me.progressPanel.Controls.Add(Me.lblPercentComplete)
 		  resources.ApplyResources(Me.progressPanel, "progressPanel")
 		  Me.progressPanel.Name = "progressPanel"
 		  Me.progressPanel.TabStop = True
-		  ' 
-		  ' tbProgress
-		  ' 
+		  '
+		  'tbProgress
+		  '
 		  resources.ApplyResources(Me.tbProgress, "tbProgress")
 		  Me.tbProgress.Name = "tbProgress"
 		  Me.tbProgress.Properties.AutoSize = False
@@ -438,45 +435,47 @@ Partial Class OutlookAppointmentForm
 		  Me.tbProgress.Properties.Maximum = 100
 		  Me.tbProgress.Properties.ShowValueToolTip = True
 		  Me.tbProgress.Properties.TickFrequency = 10
-		  ' 
-		  ' lblPercentCompleteValue
-		  ' 
+		  '
+		  'lblPercentCompleteValue
+		  '
 		  resources.ApplyResources(Me.lblPercentCompleteValue, "lblPercentCompleteValue")
-		  Me.lblPercentCompleteValue.Appearance.BackColor = (CType(resources.GetObject("lblPercentCompleteValue.Appearance.BackColor"), System.Drawing.Color))
+		  Me.lblPercentCompleteValue.Appearance.BackColor = CType(resources.GetObject("lblPercentCompleteValue.Appearance.BackColor"), System.Drawing.Color)
 		  Me.lblPercentCompleteValue.Appearance.Options.UseBackColor = True
 		  Me.lblPercentCompleteValue.Name = "lblPercentCompleteValue"
-		  ' 
-		  ' lblPercentComplete
-		  ' 
+		  '
+		  'lblPercentComplete
+		  '
 		  resources.ApplyResources(Me.lblPercentComplete, "lblPercentComplete")
-		  Me.lblPercentComplete.Appearance.BackColor = (CType(resources.GetObject("lblPercentComplete.Appearance.BackColor"), System.Drawing.Color))
+		  Me.lblPercentComplete.Appearance.BackColor = CType(resources.GetObject("lblPercentComplete.Appearance.BackColor"), System.Drawing.Color)
 		  Me.lblPercentComplete.Appearance.Options.UseBackColor = True
 		  Me.lblPercentComplete.Name = "lblPercentComplete"
-		  ' 
-		  ' lblSubject
-		  ' 
+		  '
+		  'lblSubject
+		  '
 		  resources.ApplyResources(Me.lblSubject, "lblSubject")
 		  Me.lblSubject.Name = "lblSubject"
-		  ' 
-		  ' panelMain
-		  ' 
+		  '
+		  'panelMain
+		  '
 		  resources.ApplyResources(Me.panelMain, "panelMain")
 		  Me.panelMain.Name = "panelMain"
-		  ' 
-		  ' tbDescription
-		  ' 
+		  '
+		  'tbDescription
+		  '
 		  resources.ApplyResources(Me.tbDescription, "tbDescription")
 		  Me.tbDescription.Name = "tbDescription"
 		  Me.tbDescription.Properties.AccessibleName = resources.GetString("tbDescription.Properties.AccessibleName")
 		  Me.tbDescription.Properties.AccessibleRole = System.Windows.Forms.AccessibleRole.Client
-		  ' 
-		  ' panelDescription
-		  ' 
+		  '
+		  'panelDescription
+		  '
 		  resources.ApplyResources(Me.panelDescription, "panelDescription")
 		  Me.panelDescription.Name = "panelDescription"
-		  ' 
-		  ' panel2
-		  ' 
+		  '
+		  'panel2
+		  '
+		  Me.panel2.Controls.Add(Me.cboDepartment)
+		  Me.panel2.Controls.Add(Me.lblDepartment)
 		  Me.panel2.Controls.Add(Me.lblSubject)
 		  Me.panel2.Controls.Add(Me.panel1)
 		  Me.panel2.Controls.Add(Me.tbSubject)
@@ -490,31 +489,40 @@ Partial Class OutlookAppointmentForm
 		  Me.panel2.Controls.Add(Me.edtStartDate)
 		  resources.ApplyResources(Me.panel2, "panel2")
 		  Me.panel2.Name = "panel2"
-		  ' 
-		  ' panel3
-		  ' 
+		  '
+		  'panel3
+		  '
 		  Me.panel3.Controls.Add(Me.tbDescription)
 		  resources.ApplyResources(Me.panel3, "panel3")
 		  Me.panel3.Name = "panel3"
 		  '
-		  ' appointmentBackstageControl
+		  'lblDepartment
 		  '
-		  Me.appointmentBackstageControl.Dock = System.Windows.Forms.DockStyle.Fill
+		  resources.ApplyResources(Me.lblDepartment, "lblDepartment")
+		  Me.lblDepartment.Name = "lblDepartment"
 		  '
-		  ' OutlookAppointmentForm
-		  ' 
+		  'cboDepartment
+		  '
+		  resources.ApplyResources(Me.cboDepartment, "cboDepartment")
+		  Me.cboDepartment.MenuManager = Me.ribbonControl1
+		  Me.cboDepartment.Name = "cboDepartment"
+		  Me.cboDepartment.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(CType(resources.GetObject("ComboBoxEdit1.Properties.Buttons"), DevExpress.XtraEditors.Controls.ButtonPredefines))})
+		  Me.cboDepartment.Properties.Items.AddRange(New Object() {resources.GetString("ComboBoxEdit1.Properties.Items"), resources.GetString("ComboBoxEdit1.Properties.Items1"), resources.GetString("ComboBoxEdit1.Properties.Items2")})
+		  Me.cboDepartment.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+		  '
+		  'OutlookAppointmentForm
+		  '
 		  Me.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
 		  resources.ApplyResources(Me, "$this")
 		  Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		  Me.Controls.Add(Me.panel3)
 		  Me.Controls.Add(Me.progressPanel)
 		  Me.Controls.Add(Me.panel2)
-		  Me.Controls.Add(Me.ribbonControl1)
 		  Me.Controls.Add(Me.backstageViewControl1)
+		  Me.Controls.Add(Me.ribbonControl1)
 		  Me.Name = "OutlookAppointmentForm"
 		  Me.Ribbon = Me.ribbonControl1
 		  Me.ShowInTaskbar = False
-		  '			Me.Activated += New System.EventHandler(Me.OnAppointmentFormActivated);
 		  CType(Me.ribbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
 		  CType(Me.backstageViewControl1, System.ComponentModel.ISupportInitialize).EndInit()
 		  Me.backstageViewControl1.ResumeLayout(False)
@@ -547,6 +555,7 @@ Partial Class OutlookAppointmentForm
 		  Me.panel2.ResumeLayout(False)
 		  Me.panel2.PerformLayout()
 		  Me.panel3.ResumeLayout(False)
+		  CType(Me.cboDepartment.Properties, System.ComponentModel.ISupportInitialize).EndInit()
 		  Me.ResumeLayout(False)
 		  Me.PerformLayout()
 
@@ -604,4 +613,6 @@ Partial Class OutlookAppointmentForm
 	 Private bvPrint As DevExpress.XtraBars.Ribbon.BackstageViewClientControl
 	 Private bvtPrint As DevExpress.XtraBars.Ribbon.BackstageViewTabItem
 	 Private WithEvents appointmentBackstageControl As DevExpress.XtraScheduler.Design.AppointmentBackstageControl
+	 Friend WithEvents cboDepartment As DevExpress.XtraEditors.ComboBoxEdit
+	 Friend WithEvents lblDepartment As DevExpress.XtraEditors.LabelControl
 End Class
