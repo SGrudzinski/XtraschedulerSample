@@ -28,4 +28,18 @@ Public Class Form1
 	 Private Sub schedulerControl_Click(sender As Object, e As EventArgs) Handles schedulerControl.Click
 
 	 End Sub
+
+	 Private Sub schedulerControl_EditAppointmentFormShowing(sender As Object, e As AppointmentFormEventArgs) Handles schedulerControl.EditAppointmentFormShowing
+		  Dim scheduler As DevExpress.XtraScheduler.SchedulerControl = CType(sender, DevExpress.XtraScheduler.SchedulerControl)
+		  Using form As CustomFieldSample.OutlookAppointmentForm = New CustomFieldSample.OutlookAppointmentForm(scheduler, e.Appointment, e.OpenRecurrenceForm)
+				Try
+					 e.DialogResult = form.ShowDialog
+					 e.Handled = True
+				Catch ex As Exception
+				End Try
+		  End Using
+
+
+
+	 End Sub
 End Class
